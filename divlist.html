@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+     <head> 
+        <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color: rgb(0, 221, 255);
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: orchid; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: rgb(128, 0, 68);
+	  }
+	}
+</style>
+<title>List of items in divs</title>
+</head>
+
+
+
+<body>
+    <h1>Praneeth Shanigaram builds list with divs</h1>
+    <input type="text" id="text1">
+		<div class="flex-container" id="target"><br>
+		  <div class="divlist">row item 1</div>   
+		  <div class="divlist">row item 2</div>  
+		  <div class="divlist">row item 3</div>  
+		</div>
+	
+	<p>Firstly, Press the button to create new element of the type div and then add it to the container.
+		</p>
+		<button onclick="makeNewDiv()">Add end</button>
+        <button onclick="addFront()">Add front</button>
+        <button onclick="remove()">Remove</button>
+
+
+<script>
+	function makeNewDiv(){
+		
+		let elementOne= document.createElement("div");
+        let val = document.getElementsByClassName("divlist").value;
+		var element= document.getElementById("text1").value;
+		console.log(element);
+		
+		elementOne.innerHTML = element;
+        elementOne.className = 'divlist';
+		elementOne.style.color = "blue";
+
+		
+		let container = document.getElementById("target");
+
+		container.appendChild(elementOne);
+		
+
+	}
+    function remove()
+    {
+        const divListItems = document.getElementsByClassName("divlist");
+		const length=divListItems.length;
+		console.log(length);
+        if (length>0) {
+			var middleIndex = Math.floor(length / 2);
+            const removedElement = document.querySelector('.flex-container').children[middleIndex];
+            // divListItems[middleIndex].remove();
+            removedElement.remove();
+            
+        }
+    }
+	function addFront() {
+            var inputValueOne= document.getElementById("text1").value;
+            var newElementOne= document.createElement("div");
+            newElementOne.innerHTML = inputValueOne;
+            newElementOne.className = "divlist";
+            var container = document.querySelector(".flex-container");
+            container.insertBefore(newElementOne, container.firstChild);
+        }
+	// function swapItems() {
+	// 	const divListItems = document.getElementsByClassName("divlist");
+	// 		var index1 = Math.floor(Math.random() * divListItems.length);
+	// 		var index2 = Math.floor(Math.random() * divListItems.length);
+
+			
+	// 		while (index1 === index2) {
+	// 			index2 = Math.floor(Math.random() * divListItems.length);
+	// 		}
+
+	// 		var temp = divListItems[index1];
+	// 		divListItems[index1].parentNode.insertBefore(divListItems[index2], divListItems[index1]);
+	// 		divListItems[index1].parentNode.insertBefore(temp, divListItems[index2].nextSibling);
+    // }
+
+</script>
+</body>
+</html>	
