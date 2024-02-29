@@ -54,6 +54,8 @@
         <p id="score">Score is zero</p>
         <p onclick="help()">Click for help </p>
         <p id="help">Help report</p>
+        <p><button class="btn btn-primary" onclick="newGame()">New Game</button></p>
+
     </div>
 
     <div class="container">
@@ -153,7 +155,7 @@
         
                 lastLocation = position;
                     
-                }
+            }
                 function help()
                 {
                     
@@ -186,18 +188,19 @@
         
         
                 }
-            </script>
+                function newGame() {
+                    monsterLocation = Math.floor(Math.random() * 35);
+                    fancyCoinLocations = Math.floor(Math.random() * 35);
+                    console.log(monsterLocation);
+                    console.log(fancyCoinLocations);
+                    score=null;
+                    locations=null;
+                    document.getElementById("locations").innerText =`locations: 0`;
+                    document.getElementById("score").innerText = `score: 0`;
+                }
+        </script>
                 
-            //     function newGame() {
-            //     monsterLocation = Math.floor(Math.random() * 35);
-            //     fancyCoinLocations = Math.floor(Math.random() * 35);
-            //     console.log(monsterLocation);
-            //     console.log(fancyCoinLocations);
-            //     score=null;
-            //     locations=null;
-            //     document.getElementById("locations").innerText =`locations: 0`; 
-            //     document.getElementById("score").innerText = `score: 0`;
-            // }
+            
     
 
 
